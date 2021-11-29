@@ -1,0 +1,9 @@
+name: script1
+scripts:
+  - text: こんにちは！ これは ffmpeg で作った動画です。
+    ssml: <speak>こんにちは！ これは <sub alias="えふえふえむぺぐ">ffmpeg</sub> で作った動画です。</speak>
+    background: chara/aisatsu-2.png
+  - text: 2つの動画を組み合わせてみます。
+    background: chara/aisatsu-3.png
+  - text: さらに YouTube Data API で自動投稿してみました。
+    background: chara/kangae-2.png

@@ -1,0 +1,4 @@
+
+.venv
+client_secrets.json
+upload.py-oauth2.json
