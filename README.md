@@ -2,6 +2,25 @@
 
 動画を作成するスクリプト
 
+# 動作確認環境
+
+- macOS Big Sur
+- ruby 2.7
+- aws-cli 2
+- ffmpeg 4.4
+
+```sh
+% ruby --version
+ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin20]
+
+% aws --version
+aws-cli/2.2.46 Python/3.9.7 Darwin/20.5.0 source/x86_64 prompt/off
+
+% ffmpeg -version
+ffmpeg version 4.4 Copyright (c) 2000-2021 the FFmpeg developers
+built with Apple clang version 12.0.5 (clang-1205.0.22.9)
+```
+
 # やること
 
 ## 台本ファイル (YAML ファイル)を作る
@@ -24,6 +43,7 @@ $ ruby main.rb --input daihon/daihon1.yml
 ```
 
 output ディレクトリ以下に動画ファイルが作成される。
+
 
 # 中でやっていること
 
