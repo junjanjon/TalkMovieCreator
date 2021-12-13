@@ -31,5 +31,9 @@ jobs:
       run: curl "https://fonts.google.com/download?family=Noto%20Sans%20JP" -o fonts.zip
     - name: Unzip Fonts
       run: unzip fonts.zip -d ./fonts
-    - name: Run tests
-      run: ffmpeg -r 30 -loop 1 -t 2 -i chara/aisatsu-2.png -vcodec libx264 -pix_fmt yuv420p -y tmp/output.mp4
+    - name: Create Movie Test
+      run: ffmpeg -r 30 -loop 1 -t 2 -i chara/aisatsu-2.png -vcodec libx264 -pix_fmt yuv420p -y movies/movie.mp4
+    - uses: actions/upload-artifact@v2
+      with:
+        name: movies
+        path: movies/
