@@ -30,6 +30,6 @@ jobs:
     - name: Download Font
       run: curl "https://fonts.google.com/download?family=Noto%20Sans%20JP" -o fonts.zip
     - name: Unzip Fonts
-      run: unzip font.zip -d ./fonts
+      run: unzip fonts.zip -d ./fonts
     - name: Run tests
       run: ffmpeg -r 30 -loop 1 -t 2 -i chara/aisatsu-2.png -vcodec libx264 -pix_fmt yuv420p -y tmp/output.mp4
