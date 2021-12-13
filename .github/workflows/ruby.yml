@@ -12,10 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
+        ruby-version: ['2.7', '3.0']
 
     steps:
     - uses: actions/checkout@v2
+    - name: Set Up ffmpeg
+      uses: FedericoCarboni/setup-ffmpeg@v1
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
@@ -24,5 +26,15 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run tests
-      run: ls
+    # TODO: use cache
+    - name: Download Font
+      run: curl "https://fonts.google.com/download?family=Noto%20Sans%20JP" -o fonts.zip
+    - name: Unzip Fonts
+      run: unzip fonts.zip -d ./fonts
+    - run: mkdir movies
+    - name: Create Movie Test
+      run: ffmpeg -r 30 -loop 1 -t 2 -i chara/aisatsu-2.png -vcodec libx264 -pix_fmt yuv420p -y movies/movie.mp4
+    - uses: actions/upload-artifact@v2
+      with:
+        name: movies
+        path: movies/
